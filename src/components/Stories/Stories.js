@@ -4,6 +4,8 @@ import Grid from '@mui/material/Grid';
 import Story from '../Story/Story';
 import Box from '@mui/material/Box';
 import FormControlLabel from '@mui/material/FormControlLabel';
+import BookIcon from '@mui/icons-material/Book';
+import Button from '@mui/material/Button';
 import './Stories.css';
 
 
@@ -27,13 +29,50 @@ const Stories = () => {
         const newToggleInput = { ...toggleInput }
         newToggleInput[field] = value;
         setToggleInput(newToggleInput);
-        console.log(newToggleInput);
     };
+
+    const handleDeleteAll = () => {
+        window.confirm('Are you sure you want to delete ?');
+    }
 
     return (
         <div className='landing-page'>
+            <Grid sx={{ marginTop: 10, backgroundColor: '#242527', width: '80%', mx: 'auto', p: 2 }} container spacing={0}>
+                <Grid item xs={12} sm={8} md={8} lg={8}>
+                    <Button sx={{ fontWeight: 'bold' }} variant="inherit">
+                        <BookIcon sx={{ borderRadius: '50%', backgroundColor: '#3A3B3D', mr: 1, padding: '5px' }} />
+                        Blog</Button>
 
-            <Box sx={{ width: '76%', mx: 'auto', display: 'flex', justifyContent: 'center', alignItems: 'center', my: 4, backgroundColor: '#242527', px: 4 }} >
+                    <Button onClick={handleDeleteAll} sx={{ color: '#bf483b' }} variant="inherit">Delete All</Button>
+
+                    <div style={{ display: 'inline-block', margin: '0 10px' }}>
+                        <FormControlLabel control={<Switch
+                            checked={toggleInput?.longToggle}
+                            name="longToggle"
+                            onChange={handleChange}
+                            inputProps={{ 'aria-label': 'controlled' }}
+                        />} label="Long Stories" />
+                        <h4 style={{ display: 'inline', borderRadius: '50%', backgroundColor: '#18191B', padding: '5px 10px' }}>{longStories.length}</h4>
+                    </div>
+                    <div style={{ display: 'inline-block', margin: '0 10px' }}>
+                        <FormControlLabel control={<Switch
+                            checked={toggleInput?.shortToggle}
+                            name="shortToggle"
+                            onChange={handleChange}
+                            inputProps={{ 'aria-label': 'controlled' }}
+                        />} label="Short Stories" />
+                        <h4 style={{ display: 'inline', borderRadius: '50%', backgroundColor: '#18191B', padding: '5px 10px' }}>{shortStories.length}</h4>
+                    </div>
+                </Grid>
+
+            </Grid>
+            {/* <Box sx={{ width: '75%', mx: 'auto', display: 'flex', justifyContent: 'center', alignItems: 'center', my: 4, backgroundColor: '#242527', px: 5 }} >
+
+                <Button sx={{ mt: 0.5, fontWeight: 'bold' }} variant="inherit">
+                    <BookIcon sx={{ borderRadius: '50%', backgroundColor: '#3A3B3D', mr: 1, padding: '5px' }} />
+                    Blog</Button>
+
+                <Button onClick={handleDeleteAll} sx={{ mt: 0.5, mr: 1, color: '#bf483b' }} variant="inherit">Delete All</Button>
                 <FormControlLabel control={<Switch
                     checked={toggleInput?.longToggle}
                     name="longToggle"
@@ -48,10 +87,10 @@ const Stories = () => {
                     inputProps={{ 'aria-label': 'controlled' }}
                 />} label="Short Stories" />
                 <h4 style={{ borderRadius: '50%', backgroundColor: '#18191B', padding: '5px 10px' }}>{shortStories.length}</h4>
-            </Box>
+            </Box> */}
 
             {/* blogs grid  */}
-            <Grid sx={{ width: '80%', mx: 'auto', py: 4 }} container rowSpacing={4} columnSpacing={4}>
+            <Grid sx={{ width: '80%', mx: 'auto', py: 4 }} container spacing={2}>
                 {
                     (toggleInput.longToggle && toggleInput.shortToggle) && allStories.map(story => <Story
                         key={story.id}
@@ -71,7 +110,7 @@ const Stories = () => {
                     </Story>)
                 }
             </Grid>
-        </div>
+        </div >
     );
 };
 
