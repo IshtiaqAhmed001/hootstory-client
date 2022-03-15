@@ -7,6 +7,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 
+
 const style = {
     position: 'absolute',
     top: '50%',
@@ -48,7 +49,9 @@ const AddNewBlog = ({ openModal, handleModalClose, stories }) => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+                if (data.insertedId) {
+                    alert('New Blog added successfully. Please reload!')
+                }
             })
 
 
