@@ -71,22 +71,24 @@ const Stories = () => {
                         <Button onClick={handleModalOpen} sx={{ color: '#bf483b' }} variant="inherit">Add New Blog</Button>
 
                         <div style={{ display: 'inline-block', margin: '0 10px' }}>
-                            <FormControlLabel control={<Switch
+                            <h4 style={{ display: 'inline', borderRadius: '50%', backgroundColor: '#18191B', padding: '5px 10px', marginRight: '10px' }}>{longStories.length}</h4>
+                            <h4 style={{ display: 'inline' }}>Long Stories</h4>
+                            <Switch
                                 checked={toggleInput?.longToggle}
                                 name="longToggle"
                                 onChange={handleChange}
                                 inputProps={{ 'aria-label': 'controlled' }}
-                            />} label="Long Stories" />
-                            <h4 style={{ display: 'inline', borderRadius: '50%', backgroundColor: '#18191B', padding: '5px 10px' }}>{longStories.length}</h4>
+                            />
                         </div>
                         <div style={{ display: 'inline-block', margin: '0 10px' }}>
-                            <FormControlLabel control={<Switch
+                            <h4 style={{ display: 'inline', borderRadius: '50%', backgroundColor: '#18191B', padding: '5px 10px', marginRight: '10px' }}>{shortStories.length}</h4>
+                            <h4 style={{ display: 'inline' }}>Short Stories</h4>
+                            <Switch
                                 checked={toggleInput?.shortToggle}
                                 name="shortToggle"
                                 onChange={handleChange}
                                 inputProps={{ 'aria-label': 'controlled' }}
-                            />} label="Short Stories" />
-                            <h4 style={{ display: 'inline', borderRadius: '50%', backgroundColor: '#18191B', padding: '5px 10px' }}>{shortStories.length}</h4>
+                            />
                         </div>
                     </Grid>
                 </Grid>
