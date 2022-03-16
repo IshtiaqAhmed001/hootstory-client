@@ -15,7 +15,6 @@ const Stories = () => {
     const [openModal, setOpenModal] = React.useState(false);
     const handleModalOpen = () => setOpenModal(true);
     const handleModalClose = () => setOpenModal(false);
-    const [success, setSuccess] = useState(false);
 
     const [allStories, setAllStories] = useState([]);
     const [toggleInput, setToggleInput] = useState({ longToggle: true, shortToggle: true });
@@ -50,7 +49,7 @@ const Stories = () => {
                 .then(res => res.json())
                 .then(data => {
                     if (data.deletedCount > 0) {
-                        setSuccess(true);
+                        alert('All blogs deleted successfully! Please Reload the page');
                     }
                 })
         }
@@ -91,8 +90,6 @@ const Stories = () => {
                         </div>
                     </Grid>
                 </Grid>
-                {success && <Alert severity="success">All blogs deleted successfully! Please Reload the page</Alert>
-                }
 
                 {/* Recent Blogs Container  */}
                 <Box sx={{ width: '80%', mx: 'auto', py: 4 }}>

@@ -23,22 +23,23 @@ const style = {
 const AddNewBlog = ({ openModal, handleModalClose, stories }) => {
     const blogDate = new Date();
     const initialBlogInfo = {
-        id: (stories.length + 1).toString(), title: "New Blog", body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea delectus quia nisi magni fuga nobis.", type: "long", image: 'NULL', datetime: blogDate
+        title: "New Blog", body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea delectus quia nisi magni fuga nobis.", type: "long", image: 'NULL', datetime: blogDate
     }
     const [blogInfo, setBlogInfo] = useState(initialBlogInfo);
 
     const handleOnBlur = e => {
         const field = e.target.name;
         const value = e.target.value;
-        const newBlogInfo = { ...initialBlogInfo }
+        const newBlogInfo = { ...blogInfo }
         newBlogInfo[field] = value;
         setBlogInfo(newBlogInfo);
     }
 
 
     const handleSubmit = e => {
-
-        // console.log(blogInfo);
+        blogInfo["type"] = blogInfo.type.toLowerCase();
+        blogInfo["id"] = (stories.length + 1).toString();
+        // console.log(blogInfo)
 
         fetch('https://frozen-river-03960.herokuapp.com/stories', {
             method: 'POST',
@@ -53,7 +54,6 @@ const AddNewBlog = ({ openModal, handleModalClose, stories }) => {
                     alert('New Blog added successfully. Please reload!')
                 }
             })
-
 
         handleModalClose();
         e.preventDefault();
@@ -75,7 +75,7 @@ const AddNewBlog = ({ openModal, handleModalClose, stories }) => {
                 <Fade in={openModal}>
                     <Box sx={style}>
                         <Typography id="transition-modal-title" variant="h6" component="h2">
-                            Add New Blog
+                            Add New Story
                         </Typography>
                         <form onSubmit={handleSubmit} >
 
@@ -83,28 +83,28 @@ const AddNewBlog = ({ openModal, handleModalClose, stories }) => {
                                 sx={{ width: '90%', m: 1 }}
                                 name="title"
                                 onBlur={handleOnBlur}
-                                defaultValue="Blog Title"
+                                placeholder="Story Title"
                                 size="small"
                             />
                             <TextField
                                 sx={{ width: '90%', m: 1 }}
                                 name="type"
                                 onBlur={handleOnBlur}
-                                defaultValue="Blog Type"
+                                placeholder="Story Type"
                                 size="small"
                             />
                             <TextField
                                 sx={{ width: '90%', m: 1 }}
                                 name="body"
                                 onBlur={handleOnBlur}
-                                defaultValue="Blog Paragraph"
+                                placeholder="Story Paragraph"
                                 size="small"
                             />
                             <TextField
                                 sx={{ width: '90%', m: 1 }}
                                 name="image"
                                 onBlur={handleOnBlur}
-                                defaultValue="Image Link"
+                                placeholder="Image Link"
                                 size="small"
                             />
                             <TextField
