@@ -68,7 +68,7 @@ const Stories = () => {
 
                         <Button onClick={handleDeleteAll} sx={{ color: '#bf483b' }} variant="inherit">Delete All</Button>
 
-                        <Button onClick={handleModalOpen} sx={{ color: '#bf483b' }} variant="inherit">Add New Blog</Button>
+                        <Button onClick={handleModalOpen} sx={{ color: '#4391F1' }} variant="inherit">Add New Blog</Button>
 
                         <div style={{ display: 'inline-block', margin: '0 10px' }}>
                             <h4 style={{ display: 'inline', borderRadius: '50%', backgroundColor: '#18191B', padding: '5px 10px', marginRight: '10px' }}>{longStories.length}</h4>
