@@ -19,7 +19,7 @@ const Stories = () => {
     const [success, setSuccess] = useState(false);
 
     const [allStories, setAllStories] = useState([]);
-    const [toggleInput, setToggleInput] = useState({ longToggle: false, shortToggle: false });
+    const [toggleInput, setToggleInput] = useState({ longToggle: true, shortToggle: true });
 
     useEffect(() => {
         fetch('https://frozen-river-03960.herokuapp.com/stories')
@@ -111,6 +111,9 @@ const Stories = () => {
                             })
                         }
                         {
+                            (!toggleInput.longToggle && !toggleInput.shortToggle) && <Typography sx={{ textAlign: 'left', fontWeight: 'bold', color: '#bf483b', letterSpacing: 2, ml: 2, my: 2 }} variant="caption">No blogs to show, Please select an option!</Typography>
+                        }
+                        {
                             (!toggleInput.longToggle && toggleInput.shortToggle) && shortStories.map(story => {
                                 if (new Date(story.datetime) > new Date('2021-12-31')) {
                                     return <Story
@@ -155,6 +158,10 @@ const Stories = () => {
                                 }
                                 else return ''
                             })
+                        }
+
+                        {
+                            (!toggleInput.longToggle && !toggleInput.shortToggle) && <Typography sx={{ textAlign: 'left', fontWeight: 'bold', color: '#bf483b', letterSpacing: 2, ml: 2, my: 2 }} variant="caption">No blogs to show, Please select an option!</Typography>
                         }
 
                         {
