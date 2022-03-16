@@ -6,8 +6,10 @@ import Alert from '@mui/material/Alert';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import BookIcon from '@mui/icons-material/Book';
 import Button from '@mui/material/Button';
-import './Stories.css';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
 import AddNewBlog from '../AddNewBlog/AddNewBlog';
+import './Stories.css';
 
 
 const Stories = () => {
@@ -27,6 +29,11 @@ const Stories = () => {
 
     const longStories = allStories.filter(story => story.type !== "short");
     const shortStories = allStories.filter(story => story.type === "short");
+
+    // sorting long stories by date and storing in new array 
+    const sortedAllStories = allStories.sort((a, b) => new Date(b.datetime) - new Date(a.datetime));
+    const sortedLongStories = longStories.sort((a, b) => new Date(b.datetime) - new Date(a.datetime));
+    const sortedShortStories = shortStories.sort((a, b) => new Date(b.datetime) - new Date(a.datetime));
 
     const handleChange = e => {
         const field = e.target.name;
@@ -86,27 +93,94 @@ const Stories = () => {
                 {success && <Alert severity="success">All blogs deleted successfully! Please Reload the page</Alert>
                 }
 
-                {/* blogs grid  */}
-                <Grid sx={{ width: '80%', mx: 'auto', py: 4 }} container spacing={2}>
-                    {
-                        (toggleInput.longToggle && toggleInput.shortToggle) && allStories.map(story => <Story
-                            key={story.id}
-                            story={story}>
-                        </Story>)
-                    }
-                    {
-                        (!toggleInput.longToggle && toggleInput.shortToggle) && shortStories.map(story => <Story
-                            key={story.id}
-                            story={story}>
-                        </Story>)
-                    }
-                    {
-                        (toggleInput.longToggle && !toggleInput.shortToggle) && longStories.map(story => <Story
-                            key={story.id}
-                            story={story}>
-                        </Story>)
-                    }
-                </Grid>
+                {/* Recent Blogs Container  */}
+                <Box sx={{ width: '80%', mx: 'auto', py: 4 }}>
+                    <Typography sx={{ textAlign: 'left', fontWeight: 'bold', my: 2 }} variant="body1">Recent Blogs</Typography>
+                    <Grid container spacing={2}>
+                        {
+                            (toggleInput.longToggle && toggleInput.shortToggle) && allStories.map(story => {
+                                if (new Date(story.datetime) > new Date('2021-12-31')) {
+                                    return <Story
+                                        key={story._id}
+                                        story={story}>
+                                    </Story>
+                                }
+                                else {
+                                    return ''
+                                }
+                            })
+                        }
+                        {
+                            (!toggleInput.longToggle && toggleInput.shortToggle) && shortStories.map(story => {
+                                if (new Date(story.datetime) > new Date('2021-12-31')) {
+                                    return <Story
+                                        key={story._id}
+                                        story={story}>
+                                    </Story>
+                                }
+                                else {
+                                    return ''
+                                }
+                            })
+                        }
+                        {
+                            (toggleInput.longToggle && !toggleInput.shortToggle) && longStories.map(story => {
+                                if (new Date(story.datetime) > new Date('2021-12-31')) {
+                                    return <Story
+                                        key={story._id}
+                                        story={story}>
+                                    </Story>
+                                }
+                                else {
+                                    return ''
+                                }
+                            })
+                        }
+                    </Grid>
+                </Box>
+
+
+
+                {/* Old Blogs Container  */}
+                <Box sx={{ width: '80%', mx: 'auto', py: 4 }}>
+                    <Typography sx={{ textAlign: 'left', fontWeight: 'bold', my: 2 }} variant="body1">Old Blogs</Typography>
+                    <Grid container spacing={2}>
+                        {
+                            (toggleInput.longToggle && toggleInput.shortToggle) && allStories.map(story => {
+                                if (new Date(story.datetime) <= new Date('2021-12-31')) {
+                                    return <Story
+                                        key={story._id}
+                                        story={story}>
+                                    </Story>
+                                }
+                                else return ''
+                            })
+                        }
+
+                        {
+                            (!toggleInput.longToggle && toggleInput.shortToggle) && shortStories.map(story => {
+                                if (new Date(story.datetime) < new Date('2021-12-31')) {
+                                    return <Story
+                                        key={story._id}
+                                        story={story}>
+                                    </Story>
+                                }
+                                else return ''
+                            })
+                        }
+                        {
+                            (toggleInput.longToggle && !toggleInput.shortToggle) && longStories.map(story => {
+                                if (new Date(story.datetime) < new Date('2021-12-31')) {
+                                    return <Story
+                                        key={story._id}
+                                        story={story}>
+                                    </Story>
+                                }
+                                else return ''
+                            })
+                        }
+                    </Grid>
+                </Box>
             </div >
             <AddNewBlog
                 stories={allStories}

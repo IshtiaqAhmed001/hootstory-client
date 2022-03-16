@@ -6,7 +6,7 @@ import './Story.css';
 const Story = ({ story }) => {
     const { title, image, body, datetime } = story;
     const convertedDate = new Date(datetime)
-    const mydate = new Date("2021-12-31");
+    // const mydate = new Date("2021-12-31");
     // console.log('storydate: ', convertedDate, 'today: ', mydate);
 
 
