@@ -95,7 +95,7 @@ const Stories = () => {
 
                 {/* Recent Blogs Container  */}
                 <Box sx={{ width: '80%', mx: 'auto', py: 4 }}>
-                    <Typography sx={{ textAlign: 'left', fontWeight: 'bold', my: 2 }} variant="body1">Recent Blogs</Typography>
+                    <Typography sx={{ textAlign: 'left', fontWeight: 'bold', my: 2 }} variant="body1">Recent</Typography>
                     <Grid container spacing={2}>
                         {
                             (toggleInput.longToggle && toggleInput.shortToggle) && allStories.map(story => {
@@ -143,7 +143,7 @@ const Stories = () => {
 
                 {/* Old Blogs Container  */}
                 <Box sx={{ width: '80%', mx: 'auto', py: 4 }}>
-                    <Typography sx={{ textAlign: 'left', fontWeight: 'bold', my: 2 }} variant="body1">Old Blogs</Typography>
+                    <Typography sx={{ textAlign: 'left', fontWeight: 'bold', my: 2 }} variant="body1">Old</Typography>
                     <Grid container spacing={2}>
                         {
                             (toggleInput.longToggle && toggleInput.shortToggle) && allStories.map(story => {
