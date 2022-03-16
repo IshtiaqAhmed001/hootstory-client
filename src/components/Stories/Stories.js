@@ -3,7 +3,6 @@ import Switch from '@mui/material/Switch';
 import Grid from '@mui/material/Grid';
 import Story from '../Story/Story';
 import Alert from '@mui/material/Alert';
-import FormControlLabel from '@mui/material/FormControlLabel';
 import BookIcon from '@mui/icons-material/Book';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
@@ -60,7 +59,7 @@ const Stories = () => {
     return (
         <>
             <div className='landing-page'>
-                <Grid sx={{ marginTop: 10, backgroundColor: '#242527', width: '80%', mx: 'auto', p: 2 }} container spacing={0}>
+                <Grid sx={{ marginTop: 10, backgroundColor: '#242527', width: '80%', mx: 'auto', p: 2 }} container >
                     <Grid item xs={12} sm={10} md={10} lg={10}>
                         <Button sx={{ fontWeight: 'bold' }} variant="inherit">
                             <BookIcon sx={{ borderRadius: '50%', backgroundColor: '#3A3B3D', mr: 1, padding: '5px' }} />
@@ -68,10 +67,10 @@ const Stories = () => {
 
                         <Button onClick={handleDeleteAll} sx={{ color: '#bf483b' }} variant="inherit">Delete All</Button>
 
-                        <Button onClick={handleModalOpen} sx={{ color: '#4391F1' }} variant="inherit">Add New Blog</Button>
+                        <Button onClick={handleModalOpen} sx={{ color: '#4391F1' }} variant="inherit">Add New Story</Button>
 
                         <div style={{ display: 'inline-block', margin: '0 10px' }}>
-                            <h4 style={{ display: 'inline', borderRadius: '50%', backgroundColor: '#18191B', padding: '5px 10px', marginRight: '10px' }}>{longStories.length}</h4>
+                            <h5 style={{ display: 'inline', borderRadius: '50%', backgroundColor: '#3A3B3D', padding: '5px 10px', marginRight: '10px' }}>{longStories.length}</h5>
                             <h4 style={{ display: 'inline' }}>Long Stories</h4>
                             <Switch
                                 checked={toggleInput?.longToggle}
@@ -81,7 +80,7 @@ const Stories = () => {
                             />
                         </div>
                         <div style={{ display: 'inline-block', margin: '0 10px' }}>
-                            <h4 style={{ display: 'inline', borderRadius: '50%', backgroundColor: '#18191B', padding: '5px 10px', marginRight: '10px' }}>{shortStories.length}</h4>
+                            <h5 style={{ display: 'inline', borderRadius: '50%', backgroundColor: '#3A3B3D', padding: '5px 10px', marginRight: '10px' }}>{shortStories.length}</h5>
                             <h4 style={{ display: 'inline' }}>Short Stories</h4>
                             <Switch
                                 checked={toggleInput?.shortToggle}
