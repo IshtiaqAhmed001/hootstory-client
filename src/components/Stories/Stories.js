@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import Switch from '@mui/material/Switch';
 import Grid from '@mui/material/Grid';
 import Story from '../Story/Story';
-import Alert from '@mui/material/Alert';
 import BookIcon from '@mui/icons-material/Book';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
@@ -49,7 +48,7 @@ const Stories = () => {
                 .then(res => res.json())
                 .then(data => {
                     if (data.deletedCount > 0) {
-                        alert('All blogs deleted successfully! Please Reload the page');
+                        alert('All stories deleted successfully! Please Reload the page');
                     }
                 })
         }

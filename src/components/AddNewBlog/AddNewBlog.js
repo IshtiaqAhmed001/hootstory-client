@@ -51,7 +51,7 @@ const AddNewBlog = ({ openModal, handleModalClose, stories }) => {
             .then(res => res.json())
             .then(data => {
                 if (data.insertedId) {
-                    alert('New Blog added successfully. Please reload!')
+                    alert('New Story added successfully. Please reload!')
                 }
             })
 
